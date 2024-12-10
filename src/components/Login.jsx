@@ -11,14 +11,14 @@ import 'sweetalert2/dist/sweetalert2.css'
 const Login = () => {
 
   const loginWithGoogle = () => {
-    window.open("http://localhost:5000/auth/google/callback", "_self")
+    window.open("https://musify-server-three.vercel.app/?vercelToolbarCode=6q-aB3mOXzTx7nF/auth/google/callback", "_self")
   }
   const emailRegex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
 
   const handleSubmit = async (values) => {
     const { email, password } = values;
     try {
-      const login = await axios.post(`http://localhost:5000/login`, {
+      const login = await axios.post(`https://musify-server-three.vercel.app/?vercelToolbarCode=6q-aB3mOXzTx7nF/login`, {
         email,
         password
       }, {
