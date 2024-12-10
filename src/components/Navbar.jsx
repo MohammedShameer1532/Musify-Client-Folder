@@ -18,7 +18,7 @@ const Navbar = () => {
 
   const userInfo = async () => {
     try {
-      const resData = await axios.get(`http://localhost:5000/login/success`, {
+      const resData = await axios.get(`https://musify-server-three.vercel.app/?vercelToolbarCode=6q-aB3mOXzTx7nF/login/success`, {
         withCredentials: true
       })
       setCurrentUserInfo(resData?.data?.user)
@@ -28,7 +28,7 @@ const Navbar = () => {
   }
 
   const logout = async () => {
-    window.open(`http://localhost:5000/logout`, "_self")
+    window.open(`https://musify-server-three.vercel.app/?vercelToolbarCode=6q-aB3mOXzTx7nF/logout`, "_self")
   }
   useEffect(() => {
     userInfo();
