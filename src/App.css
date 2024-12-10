@@ -1,0 +1,55 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+/* Spotify-style scrollbar */
+.scrollbar-hide::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar-hide::-webkit-scrollbar-track {
+  background: transparent; /* Track stays invisible */
+}
+
+.scrollbar-hide::-webkit-scrollbar-thumb {
+  background-color: gray; /* Dark gray thumb, similar to Spotify */
+  border-radius: 10px; /* Rounded corners */
+  visibility: hidden; /* Hide the thumb by default */
+}
+
+.scrollbar-hide::-webkit-scrollbar-thumb {
+  visibility: visible; /* Show on hover */
+}
+
+
+/* Add this to your App.css or any appropriate stylesheet */
+.scrollbar-thin {
+  scrollbar-width: thin;
+}
+.scrollbar-thumb-gray-700 {
+  scrollbar-color: #1b1c1c #1f2937;
+}
+.scrollbar-track-gray-900 {
+  scrollbar-color: #1f2937;
+}
+
+/* For WebKit browsers */
+.scrollbar-thin::-webkit-scrollbar {
+  height: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: #4b5563;
+  border-radius: 10px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+
+
+
+
+
