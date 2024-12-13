@@ -26,7 +26,9 @@ const ProtectedRoutes = () => {
 
     fetchUserInfo();
   }, [navigate]);
-
+if (isAuthenticated === null) {
+    return <div>Loading...</div>; // Loading state while checking authentication
+  }
   return isAuthenticated ? <Outlet /> : null;
 };
 
