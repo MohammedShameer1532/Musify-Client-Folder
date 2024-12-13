@@ -9,7 +9,7 @@ const ProtectedRoutes = () => {
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
-        const resData = await axios.get("https://musify-server-three.vercel.app/login/success", {
+        const resData = await axios.get("https://musify-server-phi.vercel.app/login/success", {
           withCredentials: true,
         });
         if (resData.status === 200) {
