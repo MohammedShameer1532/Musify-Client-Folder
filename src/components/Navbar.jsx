@@ -28,7 +28,7 @@ const Navbar = () => {
   }
 
   const logout = async () => {
-    window.open(`https://musify-server-three.vercel.app/logout`, "_self")
+    window.open(`https://musify-server-phi.vercel.app/logout`, "_self")
   }
   useEffect(() => {
     userInfo();
