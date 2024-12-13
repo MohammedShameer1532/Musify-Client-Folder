@@ -18,7 +18,7 @@ const Navbar = () => {
 
   const userInfo = async () => {
     try {
-      const resData = await axios.get(`https://musify-server-three.vercel.app/login/success`, {
+      const resData = await axios.get(`https://musify-server-phi.vercel.app/login/success`, {
         withCredentials: true
       })
       setCurrentUserInfo(resData?.data?.user)
