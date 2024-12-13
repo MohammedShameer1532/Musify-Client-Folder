@@ -11,6 +11,9 @@ const ProtectedRoutes = () => {
       try {
         const resData = await axios.get("https://musify-server-phi.vercel.app/login/success", {
           withCredentials: true,
+          headers: {
+            'Content-Type': 'application/json',
+          },
         });
         console.log(resData);
         if (resData.status === 200) {
