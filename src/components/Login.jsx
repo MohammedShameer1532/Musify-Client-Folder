@@ -11,7 +11,7 @@ import 'sweetalert2/dist/sweetalert2.css'
 const Login = () => {
 
   const loginWithGoogle = () => {
-  window.location.href = "https://musify-server-phi.vercel.app/auth/google";
+  window.location.href = "https://musify-server-phi.vercel.app/auth/google/callback";
 }
 
   const emailRegex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
