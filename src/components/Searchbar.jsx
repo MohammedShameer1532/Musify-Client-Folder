@@ -5,6 +5,7 @@ import { CurrentSongContext } from './contextProvider/CurrentSongContext';
 import HashLoader from "react-spinners/HashLoader";
 import Notification from './Notification';
 import CustomNoResultsOverlay from './CustomNoResultsOverlay';
+import { Modal } from 'antd';
 
 
 const Searchbar = () => {
@@ -15,7 +16,9 @@ const Searchbar = () => {
   const [notificationOpen, setNotificationOpen] = useState(false);
   const [notificationMessage, setNotificationMessage] = useState("");
   const [noResults, setNoResults] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+ 
+ 
 
   useEffect(() => {
     if (searchQuery) searchContent();
@@ -30,7 +33,7 @@ const Searchbar = () => {
       const response = await axios.get(`https://saavn.dev/api/search?query=${encodeURIComponent(searchQuery)}`);
       const res = response.data.data;
       const searchResult = res?.topQuery?.results;
-      
+
       if (searchResult?.length > 0) {
         const id = searchResult[0]?.id;
         const resultType = searchResult[0]?.type;
@@ -66,6 +69,8 @@ const Searchbar = () => {
         setNoResults(true); // Set no results state
       }
       const res = responseData.data;
+      console.log(res);
+
       setData(res);
     } catch (error) {
       console.error("Error fetching:", error);
@@ -108,15 +113,16 @@ const Searchbar = () => {
             </div>
           )}
       </div>
-      <span>
-        <Notification
+      <div className="flex justify-center items-center fixed inset-0 bg-black bg-opacity-50 z-50">
+        <Modal
+          className="bg-white p-6 rounded-lg font-bold text-2xl shadow-lg  top-[40%]"
           open={notificationOpen}
-          onClose={() => setNotificationOpen(false)}
-          title="No Results Found"
-          message={notificationMessage}
-          style={{ width: 100 }}
-        />
-      </span>
+          footer={null}
+          onCancel={() => setNotificationOpen(false)}
+        >
+          <p className="text-sm md:text-xl">{notificationMessage}</p>
+        </Modal>
+      </div>
     </div>
   )
 }
