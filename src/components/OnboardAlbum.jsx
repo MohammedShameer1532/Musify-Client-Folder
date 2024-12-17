@@ -11,6 +11,7 @@ const OnboardAlbum = () => {
   const [gradientColor, setGradientColor] = useState('');
   const { setCurrentSong, setCurrentIndex, setSongsList, currentSong } = useContext(CurrentSongContext);
   const data = detail.data;
+  
   const handlePlay = (song, index) => {
     const artists = song?.artists?.primary[0]?.name;
 
@@ -19,6 +20,7 @@ const OnboardAlbum = () => {
       artist: artists,
       url: song?.downloadUrl[4]?.url,
       image: song?.image[2]?.url,
+      id:song?.id,
     });
     setCurrentIndex(index);
     setSongsList(data.songs);
