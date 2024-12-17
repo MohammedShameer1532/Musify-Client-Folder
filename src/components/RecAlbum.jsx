@@ -10,6 +10,7 @@ const RecAlbum = () => {
   const [album, setAlbum] = useState([]);
   const { loading, setLoading } = useContext(CurrentSongContext);
   const ids = [
+    "60254268",
     "59686460",
     "57520134",
     "58811310",
@@ -30,6 +31,7 @@ const RecAlbum = () => {
     "1017243",
     "2704068",
     "1152107",
+    "29010060",
     "48840159",
     "58166459",
     "57687828",
