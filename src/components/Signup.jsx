@@ -1,4 +1,4 @@
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input, message } from 'antd';
 import { LockOutlined, MailOutlined, UserOutlined } from '@ant-design/icons';
 import signup from '../assets/signup.svg';
 import { Link } from 'react-router-dom';
@@ -26,7 +26,13 @@ const Signup = () => {
       }, {
         withCredentials: true
       })
-      window.location.href = "/home";
+      const userData = signup?.data;
+      console.log(userData);
+      localStorage.setItem("userData", JSON.stringify(userData));
+      message.info(`${userData.message}`)
+      setTimeout(()=>{
+        window.location.href = "/home";
+      },1500)
     } catch (error) {
       console.error('Signup Error:', error);
       if (error.response && error.response.status === 409) {
