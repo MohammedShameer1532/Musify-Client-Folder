@@ -9,18 +9,28 @@ import axios from "axios";
 import { Modal } from 'antd';
 
 
-
 const Navbar = () => {
   const navigate = useNavigate();
   const [searchInfo, setSearchInfo] = useState("");
   const [currentUserInfo, setCurrentUserInfo] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const userData = JSON.parse(localStorage.getItem("userData"));
+  const data = userData?.token
+  console.log("userdata", data);
+  const urlParams = new URLSearchParams(window.location.search);
+  const tokens = urlParams?.get('token');
+  console.log("tokennnnnnn", tokens);
 
 
   const userInfo = async () => {
     try {
-      const resData = await axios.get(`http://localhost:5000/login/success`, {
+      const token = tokens || data;
+      const resData = await axios.get(`https://musify-server-phi.vercel.app/login/success`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
         withCredentials: true
-      })
+      });
       setCurrentUserInfo(resData?.data?.user)
     } catch (error) {
       console.error('unable to get the currentUser details', error);
@@ -28,7 +38,16 @@ const Navbar = () => {
   }
 
   const logout = async () => {
-    window.open(`http://localhost:5000/logout`, "_self")
+    const log = await axios.get(`https://musify-server-phi.vercel.app/logout`, {
+      withCredentials: true
+    });
+    console.log(log);
+    localStorage.removeItem('userData');
+    if (log.status === 200) {
+      navigate('/')
+    } else {
+      console.error("Failed to log out:", await log.json());
+    }
   }
   useEffect(() => {
     userInfo();
@@ -46,7 +65,6 @@ const Navbar = () => {
   };
 
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
   };

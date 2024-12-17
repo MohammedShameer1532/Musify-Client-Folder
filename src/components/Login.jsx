@@ -1,4 +1,4 @@
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input, message } from 'antd';
 import { LockOutlined, MailOutlined } from '@ant-design/icons';
 import login from '../assets/login.svg';
 import { Link } from 'react-router-dom';
@@ -9,22 +9,30 @@ import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/dist/sweetalert2.css'
 
 const Login = () => {
+  const emailRegex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
 
   const loginWithGoogle = () => {
-    window.open("http://localhost:5000/auth/google/callback", "_self")
+    window.open("https://musify-server-phi.vercel.app/auth/google/callback", "_self",)
   }
-  const emailRegex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
 
   const handleSubmit = async (values) => {
     const { email, password } = values;
     try {
-      const login = await axios.post(`http://localhost:5000/login`, {
+      const response = await axios.post(`https://musify-server-phi.vercel.app/login`, {
         email,
         password
       }, {
         withCredentials: true
       });
-      window.location.href = "/home";
+      console.log("login", response.data);
+      const userData = response.data;
+      localStorage.setItem("userData", JSON.stringify(userData));
+      message.info(`${userData.message}`)
+      setTimeout(()=>{
+        window.location.href = "/home";
+      },1500)
+     
+
     } catch (error) {
       console.error('login Error:', error);
       Swal.fire({
@@ -36,6 +44,7 @@ const Login = () => {
       })
     }
   }
+
 
   return (
     <div className="h-screen flex justify-center items-center bg-gray-100">
@@ -99,7 +108,7 @@ const Login = () => {
               </Form.Item>
               <span className='flex justify-center items-center mt-[-1rem]'> Or </span>
               <Form.Item >
-                <GoogleButton onClick={loginWithGoogle} label='Login with Google'  style={{ borderRadius: '4rem', width: '100%', overflow: 'hidden', border: '1px solid blue' }} />
+                <GoogleButton onClick={loginWithGoogle} label='Login with Google' style={{ borderRadius: '4rem', width: '100%', overflow: 'hidden', border: '1px solid blue' }} />
               </Form.Item>
               <Form.Item className='flex justify-center items-center'>
                 New here ?

@@ -1,4 +1,4 @@
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input, message } from 'antd';
 import { LockOutlined, MailOutlined, UserOutlined } from '@ant-design/icons';
 import signup from '../assets/signup.svg';
 import { Link } from 'react-router-dom';
@@ -12,21 +12,27 @@ import 'sweetalert2/dist/sweetalert2.css'
 
 const Signup = () => {
   const signupWithGoogle = () => {
-    window.open("http://localhost:5000/auth/google/callback", "_self")
+    window.open("https://musify-server-phi.vercel.app/auth/google/callback", "_self")
   }
   const emailRegex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
 
   const handleSubmit = async (values) => {
     const { email, password, name } = values;
     try {
-      const signup = await axios.post(`http://localhost:5000/signup`, {
+      const signup = await axios.post(`https://musify-server-phi.vercel.app/signup`, {
         name,
         email,
         password
       }, {
         withCredentials: true
       })
-      window.location.href = "/home";
+      const userData = signup?.data;
+      console.log(userData);
+      localStorage.setItem("userData", JSON.stringify(userData));
+      message.info(`${userData.message}`)
+      setTimeout(()=>{
+        window.location.href = "/home";
+      },1500)
     } catch (error) {
       console.error('Signup Error:', error);
       if (error.response && error.response.status === 409) {

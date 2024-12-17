@@ -21,6 +21,7 @@ const Album = () => {
       artist: artists,
       url: song?.downloadUrl[4]?.url,
       image: song?.image[2]?.url,
+      id: song?.id
     });
     setCurrentIndex(index);
     setSongsList(data.songs);

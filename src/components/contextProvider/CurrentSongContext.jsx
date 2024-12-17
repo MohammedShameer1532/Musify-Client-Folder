@@ -8,6 +8,7 @@ export const CurrentSongProvider = ({ children }) => {
   const [currentIndex, setCurrentIndex] = useState(null);
   const [songsList, setSongsList] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [data,setData] = useState([]);
 
 
   return (
@@ -20,7 +21,9 @@ export const CurrentSongProvider = ({ children }) => {
         songsList,
         setSongsList,
         loading,
-        setLoading
+        setLoading,
+        data,
+        setData
       }}
     >
       {children}
