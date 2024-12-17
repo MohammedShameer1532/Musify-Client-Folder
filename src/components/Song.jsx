@@ -19,6 +19,7 @@ const Song = () => {
       artist: artists,
       url: song?.downloadUrl[4]?.url,
       image: song?.image[2]?.url,
+      id: song?.id
     });
   };
 
