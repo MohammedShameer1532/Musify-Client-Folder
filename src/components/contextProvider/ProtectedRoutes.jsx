@@ -3,19 +3,32 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const ProtectedRoutes = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(null);
-  const navigate = useNavigate();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigate = useNavigate(); 
+  const userData = JSON.parse(localStorage.getItem("userData"));
+  const data = userData?.token
+  console.log("userdata",data);
+  const urlParams = new URLSearchParams(window.location.search);
+  const tokens = urlParams?.get('token');
+  if (tokens) {
+    localStorage.setItem("userData", JSON.stringify({ token: tokens }));
+  }
+  console.log("datas", tokens);
 
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
+        const token = tokens || data;
+        if (!token) {
+          navigate("/"); 
+          return;
+        }
         const resData = await axios.get("https://musify-server-phi.vercel.app/login/success", {
-          withCredentials: true,
           headers: {
-            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
           },
+          withCredentials: true
         });
-        console.log(resData);
         if (resData.status === 200) {
           setIsAuthenticated(true);
         } else {
@@ -29,9 +42,10 @@ const ProtectedRoutes = () => {
 
     fetchUserInfo();
   }, [navigate]);
-if (isAuthenticated === null) {
-    return <div>Loading...</div>; // Loading state while checking authentication
-  }
+
+
+
+  
   return isAuthenticated ? <Outlet /> : null;
 };
 
