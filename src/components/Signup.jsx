@@ -27,12 +27,11 @@ const Signup = () => {
         withCredentials: true
       })
       const userData = signup?.data;
-      console.log(userData);
       localStorage.setItem("userData", JSON.stringify(userData));
       message.info(`${userData.message}`)
-      setTimeout(()=>{
+      setTimeout(() => {
         window.location.href = "/home";
-      },1500)
+      }, 1500)
     } catch (error) {
       console.error('Signup Error:', error);
       if (error.response && error.response.status === 409) {

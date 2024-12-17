@@ -19,8 +19,6 @@ const Navbar = () => {
   console.log("userdata", data);
   const urlParams = new URLSearchParams(window.location.search);
   const tokens = urlParams?.get('token');
-  console.log("tokennnnnnn", tokens);
-
 
   const userInfo = async () => {
     try {
@@ -41,7 +39,6 @@ const Navbar = () => {
     const log = await axios.get(`https://musify-server-phi.vercel.app/logout`, {
       withCredentials: true
     });
-    console.log(log);
     localStorage.removeItem('userData');
     if (log.status === 200) {
       navigate('/')

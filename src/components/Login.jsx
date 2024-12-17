@@ -24,15 +24,12 @@ const Login = () => {
       }, {
         withCredentials: true
       });
-      console.log("login", response.data);
       const userData = response.data;
       localStorage.setItem("userData", JSON.stringify(userData));
       message.info(`${userData.message}`)
       setTimeout(()=>{
         window.location.href = "/home";
       },1500)
-     
-
     } catch (error) {
       console.error('login Error:', error);
       Swal.fire({
