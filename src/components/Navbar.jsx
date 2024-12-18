@@ -16,7 +16,6 @@ const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const userData = JSON.parse(localStorage.getItem("userData"));
   const data = userData?.token
-  console.log("userdata", data);
   const urlParams = new URLSearchParams(window.location.search);
   const tokens = urlParams?.get('token');
 
