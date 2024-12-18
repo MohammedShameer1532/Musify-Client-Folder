@@ -58,8 +58,8 @@ const Signup = () => {
   return (
     <div className="h-screen flex justify-center items-center bg-gray-100">
       <div className="absolute top-0 md:top-0 lg:top-0 flex justify-center items-center space-x-4">
-        <h1 className="font-semibold text-4xl md:text-5xl lg:text-8xl">Musify</h1>
-        <img src={profile} alt="Profile" className="w-14 h-14 md:w-15 md:h-15 lg:w-24 lg:h-24 border-4 border-gray-500 bg-black rounded-full" />
+        <h1 className="font-semibold text-4xl md:text-5xl lg:text-7xl">Musify</h1>
+        <img src={profile} alt="Profile" className="w-14 h-14 md:w-15 md:h-15 lg:w-20 lg:h-20 border-4 border-gray-500 bg-black rounded-full" />
       </div>
       <div className='flex justify-center items-center w-full h-[80%] gap-6'>
         <div className='hidden md:flex justify-center items-center w-[50%] ml-[-5rem]'>
@@ -69,7 +69,7 @@ const Signup = () => {
             alt="Login Illustration"
           />
         </div>
-        <div className="flex justify-center items-center border border-gray-300 rounded-md w-[80%] md:w-[50%] lg:w-[25%] p-4 gap-4 bg-white shadow-lg">
+        <div className="flex justify-center items-center border border-gray-300 rounded-md w-[80%] md:w-[50%] lg:w-[25%] mt-10 md:mt-12 lg:mt-0 p-4 gap-4 bg-white shadow-lg">
           <div className='w-[90%]'>
             <h1 className='font-semibold text-lg md:text-2xl text-center'>Signup</h1>
             <Form layout="vertical" className='mt-4' onFinish={handleSubmit}>

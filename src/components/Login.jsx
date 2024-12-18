@@ -45,9 +45,9 @@ const Login = () => {
 
   return (
     <div className="h-screen flex justify-center items-center bg-gray-100">
-      <div className="absolute top-5 md:top-0 lg:top-10 flex justify-center items-center space-x-4">
-        <h1 className="font-semibold text-4xl md:text-7xl lg:text-8xl">Musify</h1>
-        <img src={profile} alt="Profile" className="w-14 h-14 md:w-24 md:h-24 border-4 border-gray-500 bg-black rounded-full" />
+      <div className="absolute top-5 md:top-0 lg:top-2 flex justify-center items-center space-x-4">
+        <h1 className="font-semibold text-4xl md:text-6xl lg:text-8xl">Musify</h1>
+        <img src={profile} alt="Profile" className="w-14 h-14 md:w-20 md:h-20 lg:w-24 lg:h-24 border-4 border-gray-500 bg-black rounded-full" />
       </div>
       <div className='flex justify-center items-center w-full h-[80%] gap-6'>
         <div className='hidden md:flex justify-center items-center w-[50%] ml-[-5rem]'>
