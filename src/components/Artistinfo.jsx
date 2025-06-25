@@ -11,7 +11,6 @@ const Artistinfo = () => {
   const { loading, setLoading } = useContext(CurrentSongContext);
 
   const ids = [
-    "456269",
     "455170",
     "670935",
     "505320",
@@ -23,7 +22,6 @@ const Artistinfo = () => {
     "456468",
     "455275",
     "455127",
-    "457536",
     "455130",
     "457548",
     "701002",
